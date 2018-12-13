@@ -1,7 +1,7 @@
 const { ObjectId } = require('mongodb');
 const _ = require('lodash');
 
-const { Todo } = require('./../model/Todo');
+const { Todo } = require('./../models/Todo');
 
 const create = (req, res) => {
   const todo = new Todo({

@@ -1,5 +1,6 @@
 const todoRoute = require('./todoRoute');
 const userRoute = require('./userRoute');
+const { authenticate } = require('./../middleware/authenticate');
 
 module.exports = (app) => {
   // Route Todos
@@ -11,4 +12,5 @@ module.exports = (app) => {
 
   // Route Users
   app.post('/users', userRoute.create);
+  app.get('/users/me', authenticate, userRoute.getByToken);
 };
