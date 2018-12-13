@@ -45,6 +45,24 @@ app.get('/todos/:id', (req, res) => {
   });
 });
 
+app.delete('/todos/:id', (req, res) => {
+  const { id } = req.params;
+  console.log('id', id);
+  if (!ObjectId.isValid(id)) {
+    console.log('masuk');
+    return res.send(404).send();
+  }
+  Todo.findByIdAndRemove(id).then((todo) => {
+    if (!todo) {
+      return res.send(404).send();
+    }
+    return res.send(todo);
+  })
+    .catch((_e) => {
+      res.status(404).send();
+    });
+});
+
 app.listen(port, () => {
   console.log(`Starting at port : ${port}`); // eslint-disable-line no-console
 });
