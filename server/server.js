@@ -47,20 +47,16 @@ app.get('/todos/:id', (req, res) => {
 
 app.delete('/todos/:id', (req, res) => {
   const { id } = req.params;
-  console.log('id', id);
   if (!ObjectId.isValid(id)) {
-    console.log('masuk');
-    return res.send(404).send();
+    return res.sendStatus(404);
   }
-  Todo.findByIdAndRemove(id).then((todo) => {
+  Todo.findByIdAndDelete(id).then((todo) => {
     if (!todo) {
-      return res.send(404).send();
+      return res.sendStatus(404);
     }
-    return res.send(todo);
+    return res.send({ todo });
   })
-    .catch((_e) => {
-      res.status(404).send();
-    });
+    .catch(_e => res.send(404).send());
 });
 
 app.listen(port, () => {
