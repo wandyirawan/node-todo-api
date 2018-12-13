@@ -64,7 +64,7 @@ const updateById = (req, res) => {
     body.completed = false;
     body.completedAt = null;
   }
-  Todo.findByIdAndUpdate(id, { $set: body }, { new: true })
+  Todo.findOneAndUpdate(id, { $set: body }, { new: true })
     .then((todo) => {
       if (!todo) {
         return res.sendStatus(404);

@@ -6,7 +6,6 @@ const create = (req, res) => {
   const body = _.pick(req.body, ['email', 'password']);
   const user = new User(body);
   user.save().then(() => user.generateAuthToken()).then((token) => {
-    console.log('token', JSON.stringify(token, undefined, 2));
     res.header('x-auth', token).send(user);
   })
     .catch((e) => {
