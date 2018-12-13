@@ -13,7 +13,7 @@ const todos = [{
   _id: new ObjectId(),
   text: 'second test todos',
   completed: true,
-  completeAt: 333,
+  completedAt: 333,
 }];
 
 beforeEach((done) => {
@@ -148,11 +148,11 @@ describe('GET /todos/:id', () => {
         .expect((res) => {
           expect(res.body.todo.text).toBe(text);
           expect(res.body.todo.completed).toBe(true);
-          expect(typeof res.body.todo.completeAt).toBe('number');
+          expect(typeof res.body.todo.completedAt).toBe('number');
         })
         .end(done);
     });
-    it('Should clean completeAt when completed false', (done) => {
+    it('Should clean completedAt when completed false', (done) => {
       const hexid = todos[0]._id.toHexString();
       const text = 'this be should be new text';
       request(app)
@@ -162,7 +162,7 @@ describe('GET /todos/:id', () => {
         .expect((res) => {
           expect(res.body.todo.text).toBe(text);
           expect(res.body.todo.completed).toBe(false);
-          expect(res.body.todo.completeAt).toBeNull();
+          expect(res.body.todo.completedAt).toBeNull();
         })
         .end(done);
     });
