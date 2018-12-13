@@ -7,6 +7,8 @@ const { Todo } = require('./model/Todo');
 // const { User } = require('./model/User');
 
 const app = express();
+const port = process.env.PORT || 4000;
+
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
@@ -43,8 +45,8 @@ app.get('/todos/:id', (req, res) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log('Start on port 4000'); // eslint-disable-line no-console
+app.listen(port, () => {
+  console.log(`Starting at port : ${port}`); // eslint-disable-line no-console
 });
 
 module.exports = {

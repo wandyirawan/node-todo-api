@@ -11,9 +11,13 @@
     "mongoose": "^5.3.16"
   },
   "scripts": {
+    "start": "node server/server.js",
     "lint": "eslint",
     "test": "mocha server/**/*test.js",
     "test-watch": "nodemon --exec \"yarn run test\""
+  },
+  "engine":{
+    "node":"11.x"
   },
   "devDependencies": {
     "eslint": "^5.10.0",
