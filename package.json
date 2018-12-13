@@ -14,7 +14,7 @@
   "scripts": {
     "start": "node server/server.js",
     "lint": "eslint",
-    "test": "mocha server/**/*test.js",
+    "test": "NODE_ENV=test mocha server/**/*test.js",
     "test-watch": "nodemon --exec \"yarn run test\""
   },
   "engine": {
